@@ -1,0 +1,13 @@
+alter proc tarin
+@yl int, 
+@ayy int,
+@gn int
+as
+begin 
+select year(a.OrderDate),month(a.OrderDate),day(a.OrderDate),c.FirstName,c.LastName,b.CompanyName,a.Freight From Orders a  
+inner join Customers b on a.CustomerID=b.CustomerID
+inner join Employees c on a.EmployeeID = c.EmployeeID
+Where year(a.OrderDate)= @yl and month(a.OrderDate)=@ayy and day(a.OrderDate)=@gn
+
+order by year(a.OrderDate),month(a.OrderDate),day(a.OrderDate) asc
+end
